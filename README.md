@@ -1,5 +1,7 @@
 # jQuery xeyes
 
+This simple jQuery plugin is meant to emulate the classic xeyes program. While it probably won't have a lot of native uses, it includes a number of advanced options that might make it useful for a specific project.
+
 ## Basic Usage
 
 The plugin modifies two block level elements, the `eyeball` and the `iris`, by using some basic trig to calculate the position of the `iris` based on the curren position of the cursor on the webpage.
