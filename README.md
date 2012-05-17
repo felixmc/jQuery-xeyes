@@ -3,10 +3,13 @@
 This is a simple jQuery plugin that is meant to emulate the classic xeyes program. While it doesn't have many native uses, some very creative people managed to incorporate it into their pojects. If you have any questions or need help using this script, contact [@felix_mc](http://twitter.com/#!/felix_mc).
 
 ## Examples
+	
+### Homebrewed
 - http://fiddle.jshell.net/felixmc/f4MnQ/show/light/
 - http://fiddle.jshell.net/felixmc/xafhf/show/light/
 - http://fiddle.jshell.net/felixmc/YggeK/show/light/ image via [VampireJaku](http://vampirejaku.deviantart.com/)
 
+### External
 - http://birondesign.com/Portfolio/ via [@birondesign](http://twitter.com/#!/birondesign)
 - http://sheepfilms.co.uk/interact/eyes.htm via [sheepfilms.co.uk](http://sheepfilms.co.uk/)
 
