@@ -1,6 +1,6 @@
 # jQuery xeyes
 
-This is a simple jQuery plugin that is meant to emulate the classic xeyes program. While it doesn't have many native uses, some very creative people managed to incorporate it into their pojects. If you have any questions or need help using this script, contact [@felix_mc](http://twitter.com/#!/felix_mc).
+This is a simple jQuery plugin that is meant to emulate the classic xeyes program. While it doesn't have many native uses, some very creative people managed to incorporate it into their projects. If you have any questions or need help using this script, contact [@felix_mc](http://twitter.com/#!/felix_mc).
 
 ## Examples
 	
