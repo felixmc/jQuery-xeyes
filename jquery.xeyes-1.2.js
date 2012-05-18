@@ -75,45 +75,55 @@ jQuery.fn.xeyes = function(options) {
 				$iris.css("left", defX + Math.cos(deg2) * (eyeW / 2 - irisW / 2 - padding) + "px").css("top", defY + Math.sin(deg2) * (eyeH / 2 - irisH / 2 - padding) + "px")
 			}
 
-		$(options.trigger).mousemove(function(e) {
-			$iris.stop().clearQueue();
-			var degree = Math.atan((e.pageY - offY) / (e.pageX - offX)),
-				direction = (offX >= e.pageX) ? -1 : 1,
-				newX = Math.cos(degree) * (eyeW / 2 - irisW / 2 - padding) * direction,
-				newY = Math.sin(degree) * (eyeH / 2 - irisH / 2 - padding) * direction,
-				radius = Math.sqrt(Math.pow(newX, 2) + Math.pow(newY, 2)),
-				distance = Math.sqrt(Math.pow(e.pageY - offY, 2) + Math.pow(e.pageX - offX, 2));
-			if (radius > distance && options.onHover.toLowerCase() != 'nofollow') {
-				$iris.css("left", (e.pageX - offX + defX) + "px").css("top", (e.pageY - offY + defY) + "px")
-			} else {
-				$iris.css("left", defX + newX + "px").css("top", defY + newY + "px")
-			}
-		}).mouseleave(function(e) {
-			if (options.triggerOut != undefined) {
-				if (options.triggerOut.x) {
-					$iris.animate({
-						left: defX - parseInt(options.triggerOut.x, 10) + "px",
-						top: defY - parseInt(options.triggerOut.y, 10) + "px"
-					}, options.triggerOutSpeed);
-				} else if (options.triggerOut.degree !== undefined) {
-					var deg = options.triggerOut.degree * Math.PI / -180;
-					$iris.animate({
-						left: defX + Math.cos(deg) * (eyeW / 2 - irisW / 2 - padding) + "px",
-						top: defY + Math.sin(deg) * (eyeH / 2 - irisH / 2 - padding) + "px"
-					}, options.triggerOutSpeed)
-				} else if (options.triggerOut == "center") {
-					$iris.animate({
-						left: defX + "px",
-						top: defY + "px"
-					}, options.triggerOutSpeed);
+		var eyesFollow = function(e) {
+				$iris.stop().clearQueue();
+				var degree = Math.atan((e.pageY - offY) / (e.pageX - offX)),
+					direction = (offX >= e.pageX) ? -1 : 1,
+					newX = Math.cos(degree) * (eyeW / 2 - irisW / 2 - padding) * direction,
+					newY = Math.sin(degree) * (eyeH / 2 - irisH / 2 - padding) * direction,
+					radius = Math.sqrt(Math.pow(newX, 2) + Math.pow(newY, 2)),
+					distance = Math.sqrt(Math.pow(e.pageY - offY, 2) + Math.pow(e.pageX - offX, 2));
+				if (radius > distance && options.onHover.toLowerCase() != 'nofollow') {
+					$iris.css("left", (e.pageX - offX + defX) + "px").css("top", (e.pageY - offY + defY) + "px")
 				} else {
-					var deg2 = position[options.triggerOut].degree * Math.PI / -180;
-					$iris.animate({
-						left: defX + Math.cos(deg2) * (eyeW / 2 - irisW / 2 - padding) + "px",
-						top: defY + Math.sin(deg2) * (eyeH / 2 - irisH / 2 - padding) + "px"
-					}, options.triggerOutSpeed);
+					$iris.css("left", defX + newX + "px").css("top", defY + newY + "px")
 				}
-			}
-		})
-	})
+			},
+			eyesReset = function(e) {
+				if (options.triggerOut != undefined) {
+					if (options.triggerOut.x) {
+						$iris.animate({
+							left: defX - parseInt(options.triggerOut.x, 10) + "px",
+							top: defY - parseInt(options.triggerOut.y, 10) + "px"
+						}, options.triggerOutSpeed);
+					} else if (options.triggerOut.degree !== undefined) {
+						var deg = options.triggerOut.degree * Math.PI / -180;
+						$iris.animate({
+							left: defX + Math.cos(deg) * (eyeW / 2 - irisW / 2 - padding) + "px",
+							top: defY + Math.sin(deg) * (eyeH / 2 - irisH / 2 - padding) + "px"
+						}, options.triggerOutSpeed)
+					} else if (options.triggerOut == "center") {
+						$iris.animate({
+							left: defX + "px",
+							top: defY + "px"
+						}, options.triggerOutSpeed);
+					} else {
+						var deg2 = position[options.triggerOut].degree * Math.PI / -180;
+						$iris.animate({
+							left: defX + Math.cos(deg2) * (eyeW / 2 - irisW / 2 - padding) + "px",
+							top: defY + Math.sin(deg2) * (eyeH / 2 - irisH / 2 - padding) + "px"
+						}, options.triggerOutSpeed);
+					}
+				}
+			};
+		
+		$(options.trigger).mousemove(eyesFollow).mouseleave(eyesReset);
+
+		$(window).resize(function() {
+			offset = $iris.offset();
+			offX = offset.left + irisW / 2;
+			offY = offset.top + irisH / 2;
+		});
+
+	});
 };​
