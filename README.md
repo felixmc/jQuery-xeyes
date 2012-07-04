@@ -12,6 +12,7 @@ This is a simple jQuery plugin that is meant to emulate the classic xeyes progra
 ### External
 - http://birondesign.com/Portfolio/ via [@birondesign](http://twitter.com/#!/birondesign)
 - http://sheepfilms.co.uk/interact/eyes.htm via [sheepfilms.co.uk](http://sheepfilms.co.uk/)
+- http://www.skoolpal.com/ via [@eskhool](http://twitter.com/#!/eskhool)
 
 ## Basic Usage
 
