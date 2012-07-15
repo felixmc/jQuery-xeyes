@@ -126,4 +126,4 @@ jQuery.fn.xeyes = function(options) {
 		});
 
 	});
-};​
+};
