@@ -2,12 +2,17 @@
 
 This is a simple jQuery plugin that is meant to emulate the classic xeyes program. While it doesn't have many native uses, some very creative people managed to incorporate it into their projects. If you have any questions or need help using this script, contact <a href="http://twitter.com/#!/felix_mc" target="_blank">@felix_mc</a>.
 
+Additional documentation <a href="http://felixmilea.com/2014/12/jquery-xeyes-redux/" target="_blank">here</a>.
+
 ## Examples
-	
-### Homebrewed
-- http://fiddle.jshell.net/felixmc/f4MnQ/show/light/
-- http://fiddle.jshell.net/felixmc/xafhf/show/light/
-- http://fiddle.jshell.net/felixmc/YggeK/show/light/ image via [VampireJaku](http://vampirejaku.deviantart.com/)
+- http://jsbin.com/butexi/15/edit?html,output
+- http://jsbin.com/caxupu/1/edit
+- http://jsbin.com/caxupu/2/edit
+- http://jsbin.com/caxupu/3/edit
+- http://jsbin.com/caxupu/4/edit
+- http://jsbin.com/caxupu/5/edit
+- http://jsbin.com/caxupu/6/edit
+- http://jsbin.com/caxupu/7/edit
 
 ### External
 - http://birondesign.com/Portfolio/ via [@birondesign](http://twitter.com/#!/birondesign)
@@ -16,17 +21,13 @@ This is a simple jQuery plugin that is meant to emulate the classic xeyes progra
 
 ## Basic Usage
 
-The plugin modifies two block level elements, the `eyeball` and the `iris` by using some basic trig to calculate the position of the `iris` based on the curren position of the cursor.
-
-You'll need at least two block-level elements to serve as the `eyeball` and the `iris` respectively:
+The plugin requires two block level elements, the eye and the iris. For the plugin to work properly, it also requires that they each have proper dimensions defined using CSS.
 
 ```html
 <div class="eyeball">
     <div class="iris"></div>
 </div>
 ```
-
-Some basic css is required for things like dimensions in order for the plugin to work. Defining backgrounds is also a good idea, so you can actually see the plugin work:
 
 ```css
 .eyeball {
@@ -50,22 +51,17 @@ $('.iris').xeyes();
 
 The plugin will automatically assume that its immidiate parent will be used as the `eyeball` element. The `eyeball` class was only required for the styling.
 
-Using the basic code above, you should get something like this: http://fiddle.jshell.net/felixmc/YKKuY/show/light/
 
-## Advanced Options
+## Configuration
 
 *All* of the following are optional. You can use them to further customize this plugin.
 
- - **padding:** space between the `iris` and the `eyeball`. Only `px` values allowed! Default value is `0px`
+ - **padding:** refers to the distance in pixels between the iris and the edge of the eyeball, similar to padding in CSS. The default value is `0`. <a class="jsbin-embed" href="http://jsbin.com/caxupu/1/embed?output"  target="_blank">Example</a>
 
- - **radius:** the path the `iris` will move inside the `eyeball`. Can be string value `"natural"` or `"circular"`. With `natural` the `iris` follows the shape of the `eyeball` in either an elliptical or circular path, while `"circular"` will force the `iris` to use a perfectly circular path using the shortest radius of the `eyeball`. Default is `"natural"`
+ - **position:** refers to the initial position the iris should be in prior to following the mouse. The following string values are supported: `center`, `top`, `bottom`, `left`, `right`, `topLeft`, `topRight`, `bottomLeft`, `bottomRight`. A number can also be provided, which will be interpreted as an angle in degrees at which to point the eyes at. Lastly, a javascript object with `x` and `y` properties as integers is also accepted. The properties will be used to offset the iris from the center of the eye. The default value is "center". <a class="jsbin-embed" href="http://jsbin.com/caxupu/2/embed?output" target="_blank">Example 1</a> <a class="jsbin-embed" href="http://jsbin.com/caxupu/3/embed?output" target="_blank">Example 2</a> <a class="jsbin-embed" href="http://jsbin.com/caxupu/4/embed?output" target="_blank">Example 3</a>
 
- - **position:** position of the `iris` when the page loads prior to moving the cursor. Can be one of the following string values: `"center"`, `"topLeft"`, `"top"`, `"topRight"`, `"right"`, `"bottomRight"`, `"bottom"`, `"bottomLeft"`. Can also be an object in the following format: `{x: 'value', y: 'value'}` where value is a pixel value. Default value is `"center"`
+ - **reset:** a boolean value that determines whether the eyes should return to their initial position when the mouse exits the trigger. The default value is false. In the following example, the initial position is set to `topRight` and the trigger is set to the red box. When you hover over the red box, the eyes should follow the mouse. However, when the mouse leaves the red box, they will return to the top right position. <a class="jsbin-embed" href="http://jsbin.com/caxupu/6/embed?output" target="_blank">Example</a>
 
- - **onHover:** behavior of the `iris` when the cursor enters the `eyeball`. Can be string value `"follow"` or `"nofollow"`. Using `"follow"` makes the `iris` move with the cursor, while `"nofollow"` ignores the cursor while on the `eyeball`. Default value is `"follow"`
+ - **trigger:** refers to the html element that triggers the eyes to follow the cursor. By default this is `window`, meaning that the eyes will follow the cursor everywhere on a page. Acceptable value for this parameter are any valid jQuery selector strings as well as any jQuery wrapped set returned by the jQuery selector. In other words, both `".trigger"` and `$(".trigger")` are valid options that will have the same result. In the following example the trigger is set to be the red box. <a class="jsbin-embed" href="http://jsbin.com/caxupu/5/embed?output" target="_blank">Example</a>
 
- - **trigger:** DOM object(s) to trigger eye movement when the cursor moves over them. Can be a jQuery selector or DOM object. Default value is `window`
- 
- - **triggerOut:** position the iris to return to when the cursor is no longer on the `trigger` element. Accepts same values as `position` option. If not specified, the iris will not move when the cursor is no longer on the `trigger` element
- 
- - **triggerOutSpeed:** speed in milliseconds for the iris to return to the position specified in `triggerOut` when the mouse leaves the `trigger` element. Default value is `1000` 
+ - **radius:** determines the shape of the iris movement. It supports two string values `circular` and `natural`. `natural` makes the iris follow the natural shape of eye, while `circular` forces the path of the iris to be a perfect circle. The default value is `natural`. Below is an example of `circular`. <a class="jsbin-embed" href="http://jsbin.com/caxupu/7/embed?output" target="_blank">Example</a>
