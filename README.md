@@ -15,7 +15,7 @@ Additional documentation <a href="http://felixmilea.com/2014/12/jquery-xeyes-red
 - http://jsbin.com/caxupu/7/edit
 
 ### External
-- http://birondesign.com/Portfolio/ via [@birondesign](http://twitter.com/#!/birondesign)
+- http://imgur.com/404 via [@imgur](http://twitter.com/#!/imgur)
 - http://sheepfilms.co.uk/interact/eyes.htm via [sheepfilms.co.uk](http://sheepfilms.co.uk/)
 - http://www.skoolpal.com/ via [@eskhool](http://twitter.com/#!/eskhool)
 
