@@ -34,6 +34,7 @@ The plugin requires two block level elements, the eye and the iris. For the plug
     width: 110px;
     height: 150px;
     background: #fff;
+    margin-right: 10px;
 }
  
 .iris {
